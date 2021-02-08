@@ -10,12 +10,16 @@ def search(query):
     fake_useragent = UserAgent().chrome
 
     headers = {
-        "Agent": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Content-Type": "text/html; charset=utf-8",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
         "Accept-Language": "en-US,en;q=0.5",
-        "Accept-Encoding": "gzip, deflate, br",
+        # "Accept-Encoding": "gzip, deflate, br", <-- For some reason it breaks the request
         "Connection": "keep-alive",
+        "Cache-Control": "no-cache",
         "User-Agent": fake_useragent
     }
+
+    print(fake_useragent)
 
     http_client = RequestsClient(headers)
     search_engine_provider = BingProvider(http_client)
@@ -23,6 +27,10 @@ def search(query):
 
     return search_engine.get_results(query)
 
-results = search("the lord of the rings")
+results = search('"Po aneksji dostawy z Dniepru przez Kanał Północnokrymski zostały zablokowane przez władze ukraińskie, które zapowiedziały"').get_results()
 
-print(results)
+for result in results:
+    print(result.get_title())
+    print(result.get_description())
+    print(result.get_url())
+    print('==================')
