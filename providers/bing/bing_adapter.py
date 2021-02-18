@@ -14,10 +14,8 @@ class BingAdapter():
 
     def get_results_from_html_response(self, response: HtmlResponse):
         html = response.get_contents()
-        # print(html)
 
         xpath_elements = self.get_xpath_records(html)
-        # print(etree.tostring(xpath_elements[0]))
 
         results_list = []
 
@@ -33,7 +31,6 @@ class BingAdapter():
                     )
                 )
             except Exception as e:
-                print(e)
                 continue
 
         return Results(results_list)

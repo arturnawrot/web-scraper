@@ -19,18 +19,8 @@ def search(query):
         "User-Agent": fake_useragent
     }
 
-    print(fake_useragent)
-
     http_client = RequestsClient(headers)
     search_engine_provider = BingProvider(http_client)
     search_engine = SearchEngine(search_engine_provider)
 
     return search_engine.get_results(query)
-
-results = search('"Po aneksji dostawy z Dniepru przez Kanał Północnokrymski zostały zablokowane przez władze ukraińskie, które zapowiedziały"').get_results()
-
-for result in results:
-    print(result.get_title())
-    print(result.get_description())
-    print(result.get_url())
-    print('==================')

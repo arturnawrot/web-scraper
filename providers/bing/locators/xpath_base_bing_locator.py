@@ -21,7 +21,6 @@ class XPathBaseBingLocator(XPathElementLocator):
             except:
                 continue
         
-        print(results)
         return self.get_best_result(results)
 
     def get_best_result(self, results):
