@@ -10,9 +10,16 @@ class RequestsClient(IHttpClient):
         self.response_type = response_type
 
     def get(self, url):
-        request = self.client.get(url, headers=self.headers)
+        response = self.client.get(url, headers=self.headers).text
+
+        self.log(response)
         
         if self.response_type == 'html':
-            return HtmlResponse(request.text)
+            return HtmlResponse(response)
         
         raise Exception('Unknown response type')
+
+    def log(self, body):
+        f = open("test.html", "w")
+        f.write(body)
+        f.close()

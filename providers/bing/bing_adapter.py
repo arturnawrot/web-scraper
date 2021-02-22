@@ -2,6 +2,7 @@ from search_engine.result import Result
 from providers.bing.locators.xpath_title_locator import XPathTitleLocator
 from providers.bing.locators.xpath_description_locator import XPathDescriptionLocator
 from providers.bing.locators.xpath_url_locator import XPathUrlLocator
+from providers.bing.locators.bs4_description_locator import BS4DescriptionLocator
 from http_clients.html_response import HtmlResponse
 from providers.bing.bing_xpaths import TITLE, DESCRIPTION, URL
 from lxml import etree
@@ -22,7 +23,7 @@ class BingAdapter():
                 results_list.append(
                     Result(
                         XPathTitleLocator(xpath_element_string).find(TITLE),
-                        XPathDescriptionLocator(xpath_element_string).find(DESCRIPTION),
+                        BS4DescriptionLocator().find(xpath_element_string),
                         XPathUrlLocator(xpath_element_string).find(URL)
                     )
                 )
