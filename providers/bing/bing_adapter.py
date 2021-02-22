@@ -1,6 +1,3 @@
-from search_engine.title import Title
-from search_engine.description import Description
-from search_engine.url import Url
 from search_engine.result import Result
 from providers.bing.locators.xpath_title_locator import XPathTitleLocator
 from providers.bing.locators.xpath_description_locator import XPathDescriptionLocator
@@ -8,6 +5,7 @@ from providers.bing.locators.xpath_url_locator import XPathUrlLocator
 from http_clients.html_response import HtmlResponse
 from providers.bing.bing_xpaths import TITLE, DESCRIPTION, URL
 from lxml import etree
+
 class BingAdapter():
 
     def get_results_from_html_response(self, response: HtmlResponse):
@@ -23,9 +21,9 @@ class BingAdapter():
             try:
                 results_list.append(
                     Result(
-                        Title(XPathTitleLocator(xpath_element_string).find(TITLE)),
-                        Description(XPathDescriptionLocator(xpath_element_string).find(DESCRIPTION)),
-                        Url(XPathUrlLocator(xpath_element_string).find(URL))
+                        XPathTitleLocator(xpath_element_string).find(TITLE),
+                        XPathDescriptionLocator(xpath_element_string).find(DESCRIPTION),
+                        XPathUrlLocator(xpath_element_string).find(URL)
                     )
                 )
             except Exception as e:
