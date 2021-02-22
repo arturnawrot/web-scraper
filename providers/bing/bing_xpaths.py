@@ -10,7 +10,8 @@ DESCRIPTION = [
     '//div[@class="b_caption"]//p/*[not(@class="news_dt")]/text()',
     '/span[@class="aCOpRe"]/span/text()',
     '//div[@class="sa_uc"]/@text',
-    '//ol[@class="b_dList"]//descendant-or-self::*/text()'
+    '//ol[@class="b_dList"]//descendant-or-self::*/text()',
+    '//span[@class="aCOpRe"]'
 ]
 
 URL = [

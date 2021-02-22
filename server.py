@@ -1,6 +1,6 @@
+from scraper import search
 from flask import request
 import flask
-from scraper import search
 import json
 
 app = flask.Flask(__name__)
@@ -22,6 +22,7 @@ def home():
             mimetype='application/json'
         )
 
-    return 'Error: No query was given'
+    return '500'
 
-app.run()
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
