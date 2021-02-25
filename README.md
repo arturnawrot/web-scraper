@@ -5,7 +5,7 @@ A Bing web scraper with an API.
 ## Installation
 
 ```bash
-git clone https://github.com/arturnawrot/web-scraper.git
+git clone https://github.com/arturnawrot/web-scraper.git && cd web-scraper
 pip install -r requirements.txt
 python3 server.py
 ```
