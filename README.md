@@ -12,7 +12,7 @@ python3 server.py
 ## Docker
 
 ```bash
-docker build .
+docker build --no-cache -t scraper .
 docker run -p 5000:5000 scraper
 ```
 
